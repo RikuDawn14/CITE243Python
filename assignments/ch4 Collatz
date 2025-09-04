@@ -14,7 +14,7 @@ while True:
     try: 
         user_input = int(input('Enter a whole number:'))
         if user_input < 1:
-            print('Why so negative. Try being positive!')
+            print('Why so negative? Try being positive!')
         else:
             break # Stops the loop if a valid number is input
     except ValueError:
