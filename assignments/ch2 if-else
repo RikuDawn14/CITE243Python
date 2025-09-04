@@ -4,7 +4,7 @@ print('The knight says, "You must choose. But choose wisely. For as the true Gra
 sit = input('Do you approach? (y/n)') # Decistion to approach the knight
 if sit == 'y':
     print('Before you are three cups. A golden cup, a silver cup, and a wooden cup.')
-    choose = input('Which d you choose? (g/s/w)') # Decition on which cup
+    choose = input('Which do you choose? (g/s/w)') # Decition on which cup
     if choose == 'w':
         print('You have chosen... wisely.')
     else:
