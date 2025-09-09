@@ -4,11 +4,11 @@ def list_to_string(items):
     if len(items) == 0:
         return ''
     elif len(items) == 1:
-        return str(items[0])
+        return str(items[0] + '.')
     elif len(items) == 2:
-        return str(items[0] and items[1])
+        return str(items[0] + ' and ' + items[1] + '.')
     else:
-        return ', '.join(items[:-1]) + ', and ' + str(items[-1])
+        return ', '.join(items[:-1]) + ', and ' + str(items[-1] + '.')
     
 def get_user_list():
     print('Enter items for your list (press Enter on empty line to finish):')
@@ -27,8 +27,8 @@ def main():
         print('You entered an empty list!')
         print('Result: ' + list_to_string(user_list))
     else:
-        print('\nYour list: ' + str(user_list))
-        print('Formatted result: ' + list_to_string(user_list))
+        print("\nYour list: " + str(user_list))
+        print("Formatted result: " + list_to_string(user_list))
 
 
 main()
