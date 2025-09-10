@@ -1,6 +1,8 @@
 def list_to_string(items):
-    # Takes a list and returns a string with items separated by commas and 'and' before the last item.
-    # Grammer is determined by number of items in list.
+    """
+    Takes a list and returns a string with items separated by commas and 'and' before the last item.
+    Grammer is determined by number of items in list.
+    """
     if len(items) == 0:
         return '>:['
     elif len(items) == 1:
@@ -10,6 +12,7 @@ def list_to_string(items):
     else:
         return ', '.join(items[:-1]) + ', and ' + str(items[-1] + '.')
     
+# Function to get user input list
 def get_user_list():
     print('Enter items for your list (press Enter on empty line to finish):')
     items = []
@@ -20,6 +23,7 @@ def get_user_list():
         items.append(item)
     return items
 
+# Function to print list
 def main():
     user_list = get_user_list()
     
