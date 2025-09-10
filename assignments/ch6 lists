@@ -1,0 +1,34 @@
+def list_to_string(items):
+    # Takes a list and returns a string with items separated by commas and 'and' before the last item.
+    # Grammer is determined by number of items in list.
+    if len(items) == 0:
+        return '>:['
+    elif len(items) == 1:
+        return str(items[0] + '.')
+    elif len(items) == 2:
+        return str(items[0] + ' and ' + items[1] + '.')
+    else:
+        return ', '.join(items[:-1]) + ', and ' + str(items[-1] + '.')
+    
+def get_user_list():
+    print('Enter items for your list (press Enter on empty line to finish):')
+    items = []
+    while True:
+        item = input('Enter item (or press Enter to finish): ')
+        if item == "":
+            break
+        items.append(item)
+    return items
+
+def main():
+    user_list = get_user_list()
+    
+    if len(user_list) == 0:
+        print('You entered an empty list!')
+        print('Result: ' + list_to_string(user_list))
+    else:
+        print("\nYour list: " + str(user_list))
+        print("Formatted result: " + list_to_string(user_list))
+
+
+main()
