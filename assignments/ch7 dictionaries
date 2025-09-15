@@ -3,6 +3,7 @@
 # Starting inventories
 inventory = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
 dragon_loot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
+loot_counter = 0
 
 # function to print inventory
 def display_inventory(inventory):
@@ -15,24 +16,32 @@ def display_inventory(inventory):
 
 # function for user start interaction
 def game_start():
+    global loot_counter
+
     print('GAME STARTING!')
     print("Type 'inventory' or 'i' to check your inventory")
     print("Type 'loot' or 'l' to add dragon's loot to your inventory")
     print("Type 'quit' or 'q' to exit the game")
     
     while True:
-        inventory_check = input('\nWhat would you like to do adventure? \n=>').lower().strip()
+        if loot_counter >= 7:
+            print("\nThe dragon has had enough! Game over.")
+            break
+        
+        inventory_check = input('\nWhat would you like to do adventurer? \n=>').lower().strip()
         
         if inventory_check in ['inventory', 'i']:
             print()
             display_inventory(inventory)
         elif inventory_check in ['loot', 'l']:
-            print('You defeated a dragon and collected it\'s treasure!')
+            loot_counter += 1
+            print('') # spacer for easier reading
+            print(loot_message(loot_counter))
+            
             add_inventory(inventory, dragon_loot)
-            print("Dragon's loot added to your inventory!")
-            print("\nYour updated inventory:")
+            print("\nDragon's loot added to your inventory!")
+            print("\nYour inventory has been updated!\n")
             display_inventory(inventory)
-            break
         elif inventory_check in ['quit', 'q']:
             print('Farewell adventure.')
             break
@@ -46,6 +55,26 @@ def add_inventory(inventory, added_items):
             inventory[item] +=1 # If item is already in inventory it increases by 1.
         else:
             inventory[item] = 1 # Add item to inventory if new.
+
+# loot loop
+def loot_message(counter):
+    if counter == 1:
+       return "You defeated the mighty dragon and collected its treasure!"
+    elif  counter == 2:
+        return "Not bad, you did it twice."
+    elif counter == 3:
+        return "Third time's the charm."
+    elif counter == 4:
+        return "Okay maybe leave the poor guy alone."
+    elif counter == 5:
+        return "Hey now! The dragon is gonna need therapy if this goes on."
+    elif counter == 6:
+        return "If you do this again you are done!"
+    elif counter >= 7:
+        return "You are the real monster here!"
+    else:
+        return "Dragon defeated!"    
+
 
 
 game_start()
