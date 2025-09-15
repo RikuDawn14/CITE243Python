@@ -47,5 +47,5 @@ def add_inventory(inventory, added_items):
         else:
             inventory[item] = 1 # Add item to inventory if new.
 
-if __name__ == "__main__":
-    game_start()
+
+game_start()
