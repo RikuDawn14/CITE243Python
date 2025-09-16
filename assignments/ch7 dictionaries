@@ -24,7 +24,7 @@ def game_start():
     print("Type 'quit' or 'q' to exit the game")
     
     while True:
-        if loot_counter >= 7:
+        if loot_counter >= 8:
             print("\nThe dragon has had enough! Game over.")
             break
         
@@ -56,22 +56,24 @@ def add_inventory(inventory, added_items):
         else:
             inventory[item] = 1 # Add item to inventory if new.
 
-# loot loop
+# loot text loop # STOP BEING MEAN TO THE DRAGON!!!
 def loot_message(counter):
     if counter == 1:
-       return "You defeated the mighty dragon and collected its treasure!"
+       return "You BRUTALLY MURDERED the ancient dragon and desecrated its sacred treasure vault!"
     elif  counter == 2:
-        return "Not bad, you did it twice."
+        return "YOU MONSTER! The dragon's orphaned children watched you butcher their parent AGAIN!"
     elif counter == 3:
-        return "Third time's the charm."
+        return "I'm calling fantasy PETA! This is dragon abuse of the highest order!"
     elif counter == 4:
-        return "Okay maybe leave the poor guy alone."
+        return "STOP! You're dancing on the dragon's grave while its spirit SCREAMS in eternal torment!"
     elif counter == 5:
-        return "Hey now! The dragon is gonna need therapy if this goes on."
+        return "The dragon's tears have formed rivers of anguish! YOU ARE A PLAGUE UPON THIS REALM!"
     elif counter == 6:
-        return "If you do this again you are done!"
-    elif counter >= 7:
-        return "You are the real monster here!"
+        return "SATAN HIMSELF would weep at your unbridled savagery! The very gods curse your name!"
+    elif counter == 7:
+        return "ALL OF EXISTENCE RECOILS IN HORROR! You make genocide look like a tea party!"
+    elif counter >= 8:
+        return "THE FABRIC OF REALITY IS TEARING APART FROM YOUR PURE EVIL! \nEven Cthulhu would flee in terror from your apocalyptic wickedness! \nYOU HAVE TRANSCENDED VILLAINY AND BECOME THE EMBODIMENT OF SUFFERING ITSELF!"
     else:
         return "Dragon defeated!"    
 
