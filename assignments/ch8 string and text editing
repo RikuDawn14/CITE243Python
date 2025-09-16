@@ -1,4 +1,27 @@
 # String and Text Editing: Table Printer Assignment
 
-def printTables():
+tableData = [['apples', 'oranges', 'cherries', 'banana'],
+             ['Alice', 'Bob', 'Carol', 'David'],
+             ['dogs', 'cats', 'moose', 'goose']]
+
+def printTables(tableData):
+
+    if not tableData or not tableData[0]:
+        return "Table empty or missing."
     
+    colWidths = []
+    for col in tableData:
+        maxWidth = max(len(item) for item in col)
+        colWidths.append(maxWidth)
+    
+    numRows = len(tableData[0])
+    for row in range(numRows):
+        rowItems = []
+        for col in range(len(tableData)):
+            item = tableData[col][row].rjust(colWidths[col])
+            rowItems.append(item)
+        print(' '.join(rowItems))
+
+printTables(tableData)
+
+input('Press ENTER to exit.')
