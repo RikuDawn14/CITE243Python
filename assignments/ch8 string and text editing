@@ -15,14 +15,18 @@ def printTables(tableData):
         maxWidth = max(len(item) for item in col)
         colWidths.append(maxWidth)
     
+    # Rotates list vertical and sets right adjust and spacing of lists
     numRows = len(tableData[0])
     for row in range(numRows):
         rowItems = []
         for col in range(len(tableData)):
             item = tableData[col][row].rjust(colWidths[col])
             rowItems.append(item)
-        print(' '.join(rowItems))
+        print('  '.join(rowItems))
+
+input("Press 'p' to print table. =>")
+print('') # Left blank for readability
 
 printTables(tableData)
 
-input('Press ENTER to exit.')
+input('\nPress ENTER to exit.')
