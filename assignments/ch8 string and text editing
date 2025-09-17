@@ -9,6 +9,7 @@ def printTables(tableData):
     if not tableData or not tableData[0]:
         return "Table empty or missing."
     
+    # Figures out the column widths for off sets
     colWidths = []
     for col in tableData:
         maxWidth = max(len(item) for item in col)

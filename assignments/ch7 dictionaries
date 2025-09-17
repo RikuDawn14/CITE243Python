@@ -34,7 +34,7 @@ def game_start():
             print()
             display_inventory(inventory)
         elif inventory_check in ['loot', 'l']:
-            loot_counter += 1
+            loot_counter += 1 # Add 1 point to loot_counter to change kill message
             print('') # spacer for easier reading
             print(loot_message(loot_counter))
             
