@@ -24,7 +24,7 @@ def printTables(tableData):
             rowItems.append(item)
         print('  '.join(rowItems))
 
-input("Press 'p' to print table. =>")
+input("Press 'p' to print table. => ")
 print('') # Left blank for readability
 
 printTables(tableData)
