@@ -63,7 +63,7 @@ def password_input():
         password = input('\nPlease enter a password to check security, then hit ENTER. \n=>')
     
         if len(password) == 0:
-            print("\nYou didn't enter a password! Try again.\n")
+            print("\nYou didn't even enter a password! Try again.\n")
             continue
 
             
@@ -72,7 +72,7 @@ def password_input():
             break
 
         else:
-            print('\nWow, your password is as secure as a screen door on a submarine!\nTry again.\n')
+            print("\nWow, your password is as secure as a screen door on a submarine!\nHere's some tips.\n")
             detail(password)
 
             
