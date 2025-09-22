@@ -16,17 +16,31 @@ def checker(password):
 
     return bool(re.match(pattern, password))
 
+# Function to give feedback on the password issues.
 def detail(password):
 
     results = {
         checker(password): False,
-        'length_ok': len(password) >= 8,
+        'length_short': len(password) >= 8,
+        'length_long': len(password) <= 20,
         'has_lower': bool(re.search(r'[a-z]', password)),
         'has_upper': bool(re.search(r'[A-Z]', password)),
         'has_special': bool(re.search(r'[@$#%]', password)),
-
-    }
+        'has_numb': bool(re.search(r'\d', password)),
+        }
     
+    if not results['length_short']:
+        print("\nPassword is to short.\n")
+    if not results['length_long']:
+        print("\nPassword too long.\n")
+    if not results['has_lower']:
+        print("\nNeed lower case\n")
+    if not results['has_upper']:
+        print("\nNeed upper\n")
+    if not results['has_special']:
+        print("\nNeed special character\n") 
+    if not results['has_numb']:
+        print("\nNeed number\n")
 
 
 
