@@ -32,7 +32,7 @@ def detail(password):
     if not results['length_short']:
         print("- This password is shorter than my attention span!")
     if not results['length_long']:
-        print("- How about we trim that down to a haiku?")
+        print("- How about we trim that down to at most a haiku?")
     if not results['has_lower']:
         print("- Time to let your password chill with some lowercase vibes!")
     if not results['has_upper']:
