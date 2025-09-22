@@ -3,18 +3,18 @@
 import re
 
 # Function to check password strength.
-def checker():
+def checker(pattern):
 
     pattern = re.compile(r'''(
-         ^(?=.*[a-z])
-          (?=.*[A-Z])
-          (?=.*\d)
-          (?=.*[@$#%])
-          [A-Za-z\d@$#%]
-          {8,20}$            
+         ^(?=.*[a-z])               # Check for lower
+          (?=.*[A-Z])               # Check for upper
+          (?=.*\d)                  # Check for number
+          (?=.*[@$#%])              # Check for special 
+          [A-Za-z\d@$#%]{8,20}$     # Check length       
         
         )''', re.VERBOSE)
 
+    if 
 
 
 
