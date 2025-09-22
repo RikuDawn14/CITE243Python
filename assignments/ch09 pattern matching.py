@@ -20,7 +20,6 @@ def checker(password):
 def detail(password):
 
     results = {
-        'strong_pass': checker(password),
         'length_short': len(password) >= 8,
         'length_long': len(password) <= 20,
         'has_lower': bool(re.search(r'[a-z]', password)),
@@ -71,7 +70,7 @@ def password_input():
             break
 
         else:
-            print("\nWow, your password is as secure as a screen door on a submarine!\nHere's some info.\n")
+            print("\nWow, your password is as secure as a screen door on a submarine!\nHere is something, or things you should know.\n")
             detail(password)
 
             
