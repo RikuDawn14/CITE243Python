@@ -6,9 +6,9 @@ import re
 def checker(password):
 
     pattern = re.compile(r'''(
-         ^(?=.*[a-z])               # Check for lower
-          (?=.*[A-Z])               # Check for upper
-          (?=.*\d)                  # Check for number
+         ^(?=.*[a-z])                   # Check for lower
+          (?=.*[A-Z])                   # Check for upper
+          (?=.*\d)                      # Check for number
           (?=.*[@$#%&*!?])              # Check for special 
           [A-Za-z\d@$#%&*!?]{8,20}$     # Check length       
         
