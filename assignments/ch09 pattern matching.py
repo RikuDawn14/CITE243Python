@@ -47,7 +47,7 @@ def detail(password):
 # Function to get user input password.
 def password_input():
     
-    print("=*" * 40)
+    print("=*" * 33 + "=")
     print("""
         =*=*=*=*=*= Password Strength Checker =*=*=*=*=*=
                           Requierements
@@ -57,10 +57,10 @@ def password_input():
         - At least 1 number
         - At least 1 special character (@$#%&*!?)
           """)
-    print("=*" * 40)
+    print("=*" * 33 + "=")
     
     while True:
-        password = input('\nPlease enter a password to check security, then hit ENTER. \n=>')
+        password = input('\nPlease enter a password to check security, then hit ENTER.\n=>')
     
         if len(password) == 0:
             print("\nYou didn't even enter a password! Try again.\n")
