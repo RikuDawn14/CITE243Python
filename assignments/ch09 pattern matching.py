@@ -9,8 +9,8 @@ def checker(password):
          ^(?=.*[a-z])               # Check for lower
           (?=.*[A-Z])               # Check for upper
           (?=.*\d)                  # Check for number
-          (?=.*[@$#%])              # Check for special 
-          [A-Za-z\d@$#%]{8,20}$     # Check length       
+          (?=.*[@$#%&*!?])              # Check for special 
+          [A-Za-z\d@$#%&*!?]{8,20}$     # Check length       
         
         )''', re.VERBOSE)
 
@@ -25,30 +25,42 @@ def detail(password):
         'length_long': len(password) <= 20,
         'has_lower': bool(re.search(r'[a-z]', password)),
         'has_upper': bool(re.search(r'[A-Z]', password)),
-        'has_special': bool(re.search(r'[@$#%]', password)),
+        'has_special': bool(re.search(r'[@$#%&*!?]', password)),
         'has_numb': bool(re.search(r'\d', password)),
         }
     
     if not results['length_short']:
-        print("\nPassword is to short.\n")
+        print("- This password is shorter than my attention span!")
     if not results['length_long']:
-        print("\nPassword too long.\n")
+        print("- How about we trim that down to a haiku?")
     if not results['has_lower']:
-        print("\nNeed lower case\n")
+        print("- Time to let your password chill with some lowercase vibes!")
     if not results['has_upper']:
-        print("\nNeed upper\n")
+        print("- Hey there, lowercase lover! Your password needs a little upper-class attitude!")
     if not results['has_special']:
-        print("\nNeed special character\n") 
+        print("- A password without a special character? That's like a party without music!") 
     if not results['has_numb']:
-        print("\nNeed number\n")
+        print("- Your password is like a pie without filling; add a number!")
 
 
 
 # Function to get user input password.
 def password_input():
     
+    print("=*" * 40)
+    print("""
+        =*=*=*=*=*= Password Strength Checker =*=*=*=*=*=
+                          Requierements
+        - 8-20 Characters long
+        - At least 1 lowercase letter
+        - At least 1 uppercase letter
+        - At least 1 number
+        - At least 1 special character (@$#%&*!?)
+          """)
+    print("=*" * 40)
+    
     while True:
-        password = input('Please enter a password to check security, then hit ENTER. \n=>')
+        password = input('\nPlease enter a password to check security, then hit ENTER. \n=>')
     
         if len(password) == 0:
             print("\nYou didn't enter a password! Try again.\n")
@@ -56,11 +68,11 @@ def password_input():
 
             
         if checker(password) == True:
-            print("Good")
+            print("\nYour password is like Colonel Sanders blend of 11 herbs and spices; its a secret!\n")
             break
 
         else:
-            print('no')
+            print('\nWow, your password is as secure as a screen door on a submarine!\nTry again.\n')
             detail(password)
 
             
