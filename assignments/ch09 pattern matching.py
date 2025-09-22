@@ -68,11 +68,11 @@ def password_input():
 
             
         if checker(password) == True:
-            print("\nYour password is like Colonel Sanders blend of 11 herbs and spices; its a secret!\n")
+            print("\nYour password is like Colonel Sanders blend of 11 herbs and spices; it's a secret!\n")
             break
 
         else:
-            print("\nWow, your password is as secure as a screen door on a submarine!\nHere's some tips.\n")
+            print("\nWow, your password is as secure as a screen door on a submarine!\nHere's some info.\n")
             detail(password)
 
             
