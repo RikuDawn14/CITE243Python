@@ -1,4 +1,20 @@
 # Chapter 9 (TEXT PATTERN MATCHING WITH REGULAR EXPRESSIONS) Assignment
+"""
+===========================================================
+Program Name: ch09 pattern matching
+Author: Matthew Balthaser
+Date: 2025-09-28
+Description:
+    This program performs a password complexity verification.
+    It is designed to let users test their password against known good password practices,
+    and mildly insult them if they don't.
+    
+Usage:
+    Run the script using Python 3.x13.7. Ensure all dependencies
+    are installed before execution.
+
+===========================================================
+"""
 
 import re
 
