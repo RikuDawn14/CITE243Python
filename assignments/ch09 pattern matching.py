@@ -20,7 +20,7 @@ def checker(password):
 def detail(password):
 
     results = {
-        checker(password): False,
+        'strong_pass': checker(password),
         'length_short': len(password) >= 8,
         'length_long': len(password) <= 20,
         'has_lower': bool(re.search(r'[a-z]', password)),
@@ -28,7 +28,7 @@ def detail(password):
         'has_special': bool(re.search(r'[@$#%&*!?]', password)),
         'has_numb': bool(re.search(r'\d', password)),
         }
-    
+    # Compares dictionary values to give user feedback on what issue they have.
     if not results['length_short']:
         print("- This password is shorter than my attention span!")
     if not results['length_long']:
@@ -65,7 +65,6 @@ def password_input():
         if len(password) == 0:
             print("\nYou didn't even enter a password! Try again.\n")
             continue
-
             
         if checker(password) == True:
             print("\nYour password is like Colonel Sanders blend of 11 herbs and spices; it's a secret!\n")
