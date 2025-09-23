@@ -17,6 +17,7 @@ Usage:
 """
 
 import re
+import getpass
 
 # Function to check password strength.
 def checker(password):
@@ -75,7 +76,7 @@ def password_input():
     print("=*" * 33 + "=")
     
     while True:
-        password = input('\nPlease enter a password to check security, then hit ENTER.\n=>').replace(" ", "")
+        password = getpass.getpass(prompt='\nPlease enter a password to check security, then hit ENTER.\n=> ').replace(" ", "")
     
         if len(password) == 0:
             print("\nYou didn't even enter a password! Try again.\n")
