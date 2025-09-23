@@ -75,7 +75,7 @@ def password_input():
     print("=*" * 33 + "=")
     
     while True:
-        password = input('\nPlease enter a password to check security, then hit ENTER.\n=>')
+        password = input('\nPlease enter a password to check security, then hit ENTER.\n=>').replace(" ", "")
     
         if len(password) == 0:
             print("\nYou didn't even enter a password! Try again.\n")
