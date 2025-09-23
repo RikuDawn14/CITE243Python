@@ -6,8 +6,8 @@ Author: Matthew Balthaser
 Date: 2025-09-28
 Description:
     This program creates a Mad Libs that reads in text files and
-    lets the user add their own text anywhere the word ADJECTIVE, NOUN, ADVERB, or VERB appears in the text file.
-    It is designed to print the results to the screen in addition to saving them to a new text file.
+    lets the user add their own text anywhere the word ADJECTIVE, NOUN, ADVERB, or VERB appears.
+    It is designed to print the results to the screen in addition to saving them to a text file.
     
 Usage:
     Run the script using Python 3.x13.7. Ensure all dependencies
