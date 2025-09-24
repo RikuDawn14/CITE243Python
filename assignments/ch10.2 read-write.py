@@ -24,10 +24,16 @@ import re
 # Function to read txt file to allow user to input words
 def read_txt():
 
-    file_path = input("\nEnter file path to Mad Lib txt file.\n =>")
-    mad_lib = open(file_path, 'a', encoding='UTF-8')
+    mad_lib = Path(Path.cwd()/'test.txt')
+
+    with open('test.txt', 'w') as file:
+        mad_data = file.read()
+        print(mad_data)
 
     for words in ["ADJECTIVE", "NOUN", "ADVERB", "VERB"]:
         while mad_lib.find(words) > -1:
-            mad_lib = mad_lib.replace(words, input("Enter a %s:\n =>" % (words.lower())), 1)
+           mad_lib = mad_lib.replace(words, input("Enter a %s:\n =>" % (words.lower())), 1)
+    
+    print('\n' + '=' * 20 + '\n' + mad_lib + '\n' + '=' * 20 + '\n')
 
+read_txt()    
