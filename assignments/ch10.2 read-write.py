@@ -22,17 +22,18 @@ from pathlib import Path
 import re
 
 # Function to read txt file to allow user to input words
-def read_txt():
+# def read_txt():
 
-    mad_lib = Path(Path.cwd()/'test.txt')
+#mad_lib = Path(Path.cwd()/'test.txt')
 
-    with open(Path.cwd()/'test.txt') as file:
-        mad_data = file.read()
-        print(mad_data)
+with open(Path.cwd()/'text.txt', encoding='UTF-8') as file:
+    mad_data = file.read()
+    
+print(mad_data)
 
-#    for words in ["ADJECTIVE", "NOUN", "ADVERB", "VERB"]:
-#        while mad_lib.find(words) > -1:
-#           mad_lib = mad_lib.replace(words, input("Enter a %s:\n =>" % (words.lower())), 1)
+for words in ["ADJECTIVE", "NOUN", "ADVERB", "VERB"]:
+    while mad_lib.find(words) > -1:
+        mad_lib = mad_lib.replace(words, input("Enter a %s:\n =>" % (words.lower())), 1)
     
 #    print('\n' + '=' * 20 + '\n' + mad_lib + '\n' + '=' * 20 + '\n')
 
