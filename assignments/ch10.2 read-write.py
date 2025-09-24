@@ -19,22 +19,71 @@ Usage:
 
 import os
 from pathlib import Path
-import re
 
 # Function to read txt file to allow user to input words
 def read_txt():
 
-    mad_lib = Path(Path.cwd()/'test.txt')
+    global mad_data
 
     with open(Path.cwd()/'text.txt', encoding='UTF-8') as file:
      mad_data = file.read()
     
-    print(mad_data)
-
-    for words in ["ADJECTIVE", "NOUN", "ADVERB", "VERB"]:
-        while mad_data.find(words) > -1:
-            mad_lib = mad_data.replace(words, input("Enter a %s:\n =>" % (words.lower())), 1)
+    for words in ["ADJECTIVE", "NOUN", "ADVERB", "VERB", "COLOR", "EMOTION", "PLURAL NOUN", "SHAPE"]:
+        while mad_data.find(words) > 0:
+            mad_data = mad_data.replace(words, get_input(f"Enter a {words.lower()}:\n =>"), 1)
     
-    print('\n' + '=' * 20 + '\n' + mad_lib + '\n' + '=' * 20 + '\n')
+    long_line = max(mad_data.splitlines(), key=len)
 
-read_txt()    
+    print('\n' + '=' * len(long_line) + '\n' + mad_data + '=' * len(long_line) + '\n')
+
+# Function to not allow blank inputs for Mad Lib
+def get_input(prompt):
+    while True:
+        user_input = input(prompt).strip()
+        if user_input:
+            return user_input
+        print("You have to enter something! No blanks.")
+
+
+#Function to write results of mad_lib to .txt file in chosen location.
+def file_write():
+
+    file_path = input("\nEnter file path for custom save location and name.\nLeave blank and hit ENTER to save in location of this python file.\n=> ")
+    
+    if not file_path:
+        file_path = Path.cwd()/"mad_lib.txt"
+
+    folder = os.path.dirname(file_path)
+
+    if folder and not os.path.exists(folder):
+        mkdir = input(f"The directory {{folder}} does not exist.\nWould you like to create it? (y/n): ").strip().lower()
+
+        if mkdir == "y":
+            os.makedirs(folder)
+            print(f"Created directory: {folder}")
+        else:
+            print("\nFile not saved.")
+            return
+    
+    try:
+        with open(file_path, 'w') as file:
+            file.write(mad_data)
+        print(f"Your Mad Lib was saved to: {file_path}")
+    except Exception as e:
+        print(f"Error saving file: {e}")  
+
+
+# Start of program.
+print("=" * 28 + "\nWelcome to a python Mad Lib.\n" + "=" * 28)
+input('\nPress ENTER to start!\n')
+
+read_txt()
+
+save_file = input("\nWould you like to save this as a text file? (y/n): ").strip().lower()
+if save_file == 'y':
+    file_write()
+
+else:
+    print("\nFile not saved.")
+
+input('\nPress ENTER to exit.')
