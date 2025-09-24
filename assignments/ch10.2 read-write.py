@@ -27,13 +27,7 @@ def read_txt():
     file_path = input("\nEnter file path to Mad Lib txt file.\n =>")
     mad_lib = open(file_path, 'a', encoding='UTF-8')
 
-    patter = re.compile(r'''(
-              ^('ADJECTIVE')
-              ('NOUN')
-              ('VERB')
-              ('COLOR')
-              ('EMOTION')
-              ('PLUARL_NOUN')
-              ('SHAPE')$
-              )''')
+    for words in ["ADJECTIVE", "NOUN", "ADVERB", "VERB"]:
+        while mad_lib.find(words) > -1:
+            mad_lib = mad_lib.replace(words, input("Enter a %s:\n =>" % (words.lower())), 1)
 
