@@ -24,17 +24,26 @@ from pathlib import Path
 def read_txt():
 
     global mad_data
+    while True:
+        mad_lib_file = input("Enter file path of desired Mad Lib text file.\n => ")
+        if not os.path.exists(mad_lib_file):
+            print("File does not exist or file path was entered wrong.")
 
-    with open(Path.cwd()/'text.txt', encoding='UTF-8') as file:
-     mad_data = file.read()
-    
-    for words in ["ADJECTIVE", "NOUN", "ADVERB", "VERB", "COLOR", "EMOTION", "PLURAL NOUN", "SHAPE"]:
-        while mad_data.find(words) > 0:
-            mad_data = mad_data.replace(words, get_input(f"Enter a {words.lower()}:\n =>"), 1)
-    
-    long_line = max(mad_data.splitlines(), key=len)
+        else:
+            try:
+                with open(mad_lib_file, encoding='UTF-8') as file:
+                    mad_data = file.read() 
+        
+                for words in ["ADJECTIVE", "NOUN", "ADVERB", "VERB", "COLOR", "EMOTION", "PLURAL NOUN", "SHAPE"]:
+                    while mad_data.find(words) > 0:
+                        mad_data = mad_data.replace(words, get_input(f"Enter a {words.lower()}:\n =>"), 1)
+        
+                long_line = max(mad_data.splitlines(), key=len)
 
-    print('\n' + '=' * len(long_line) + '\n' + mad_data + '=' * len(long_line) + '\n')
+                print('\n' + '=' * len(long_line) + '\n' + mad_data + '=' * len(long_line) + '\n')
+                break
+            except Exception as e:
+                print(f"Error: {e}")
 
 # Function to not allow blank inputs for Mad Lib
 def get_input(prompt):
@@ -43,7 +52,6 @@ def get_input(prompt):
         if user_input:
             return user_input
         print("You have to enter something! No blanks.")
-
 
 #Function to write results of mad_lib to .txt file in chosen location.
 def file_write():
@@ -70,7 +78,7 @@ def file_write():
             file.write(mad_data)
         print(f"Your Mad Lib was saved to: {file_path}")
     except Exception as e:
-        print(f"Error saving file: {e}")  
+        print(f"Error saving file: {e}")
 
 
 # Start of program.
