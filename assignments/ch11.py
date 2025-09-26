@@ -1,15 +1,15 @@
 # Converting Dates from American(MM-DD-YYYY) to European(DD-MM-YYYY) style. 
-# C:\Users\Matthew Balthaser\Videos\text
 
 import os
 import re
 from pathlib import Path
 import shutil
+import time
 
-
+file_numb = 0
 
 def walk_dir(start_dir, dest_dir):
-    
+    global file_numb
     pattern = re.compile(r'(\d{2})-(\d{2})-(\d{4})')
     
     for root, dirs, files in os.walk(start_dir):
@@ -17,6 +17,7 @@ def walk_dir(start_dir, dest_dir):
         for filename in files:
             match = pattern.search(filename)
             if match:
+                file_numb += 1
                 date_adjust(root, filename, match, dest_dir)
 
 
@@ -29,9 +30,10 @@ def date_adjust(root, filename, match, dest_dir):
     
 
 def file_save(root, filename, new_name, dest_dir):
+    
     src = os.path.join(root, filename)
     dest = os.path.join(dest_dir, new_name)
-    shutil.move(src, dest)
+    shutil.move(src, dest)   
 
 
 ### Start of program ###
@@ -58,13 +60,17 @@ while True:
                         print(f"Created directory: {dest_dir}")
                         
                     else:
-                        print("\nDirectory was not made.\nClosing program.")
+                        print("\nDirectory was not made.\n\nClosing program.")
                         exit()
                 except Exception as e:
                     print(f"Error: {e}")
                         
     break
 
+print("\n---Program starting.---\n")
+time.sleep(3)
 walk_dir(start_dir, dest_dir)
+
+print(f"({file_numb}) file(s) have had the dates converted and saved in ({dest_dir}).")
 
 input('\nPress any KEY to exit.')
