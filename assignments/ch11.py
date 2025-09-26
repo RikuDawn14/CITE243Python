@@ -2,7 +2,6 @@
 
 import os
 import re
-from pathlib import Path
 import shutil
 import time
 
@@ -66,10 +65,15 @@ while True:
                     print(f"Error: {e}")                        
     break
 
-print("\n---Program starting.---\n")
-time.sleep(3)
+print("\n---PROGRAM STARTING---\n")
+time.sleep(1)
 walk_dir(start_dir, dest_dir)
 
-print(f"({file_numb}) file(s) have had the dates converted and saved in ({dest_dir}).")
+if file_numb == 0:
+    print("No files with dates found. Check your file path to ensure right location.")
+elif file_numb == 1:
+    print(f"({file_numb}) file has had the dates converted and saved in ({dest_dir}).")
+else:
+    print(f"({file_numb}) files have had the dates converted and saved in ({dest_dir}).")
 
 input('\nPress any KEY to exit.')
