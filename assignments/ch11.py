@@ -20,8 +20,6 @@ def walk_dir(start_dir, dest_dir):
                 date_adjust(root, filename, match, dest_dir)
 
 
-
-
 def date_adjust(root, filename, match, dest_dir):
 
     mm, dd, yyyy = match.groups()
@@ -35,6 +33,8 @@ def file_save(root, filename, new_name, dest_dir):
     dest = os.path.join(dest_dir, new_name)
     shutil.move(src, dest)
 
+
+### Start of program ###
 print("=" * 60 + "\nDate Format Converter: American (MM-DD-YYYY) to European (DD-MM-YYYY)\n" + "=" * 60)
 
 while True:
@@ -62,7 +62,7 @@ while True:
                         exit()
                 except Exception as e:
                     print(f"Error: {e}")
-                    exit()    
+                        
     break
 
 walk_dir(start_dir, dest_dir)
