@@ -63,8 +63,7 @@ while True:
                         print("\nDirectory was not made.\n\nClosing program.")
                         exit()
                 except Exception as e:
-                    print(f"Error: {e}")
-                        
+                    print(f"Error: {e}")                        
     break
 
 print("\n---Program starting.---\n")
