@@ -1,5 +1,5 @@
 # Converting Dates from American(MM-DD-YYYY) to European(DD-MM-YYYY) style. 
-# C:\Users\Matthew Balthaser\Videos\Desktop
+# C:\Users\Matthew Balthaser\Videos\text
 
 import os
 import re
@@ -8,26 +8,32 @@ import shutil
 
 
 
-def walk_dir(start_dir):
-
-    for root, files in os.walk(start_dir):
-        pattern = re.compile(r'(\d{2})-(\d{2})-(\d{4})')
+def walk_dir(start_dir, dest_dir):
+    
+    pattern = re.compile(r'(\d{2})-(\d{2})-(\d{4})')
+    
+    for root, dirs, files in os.walk(start_dir):
+        
         for filename in files:
             match = pattern.search(filename)
             if match:
-                date_adjust(root, match)
+                date_adjust(root, filename, match, dest_dir)
 
 
 
-def date_adjust(root, match):
 
-    filename = match
-    #new_name = filename.replace(match.group(0), match.group(2) + "-" + match.group(1) + "-" + match.group(3))
-    #print(root + new_name)
+def date_adjust(root, filename, match, dest_dir):
+
+    mm, dd, yyyy = match.groups()
+    new_name = filename.replace(match.group(0), f"{dd}-{mm}-{yyyy}")
+
+    file_save(root, filename, new_name, dest_dir)
     
 
-#def file_save(): """
-
+def file_save(root, filename, new_name, dest_dir):
+    src = os.path.join(root, filename)
+    dest = os.path.join(dest_dir, new_name)
+    shutil.move(src, dest)
 
 print("=" * 60 + "\nDate Format Converter: American (MM-DD-YYYY) to European (DD-MM-YYYY)\n" + "=" * 60)
 
@@ -41,6 +47,7 @@ while True:
 
         if not dest_dir:
             dest_dir = start_dir
+            break
 
         else:
             if not os.path.exists(dest_dir): # If os.path.exists(dest_dir) is false move to mkdir.
@@ -49,13 +56,15 @@ while True:
                     if mkdir == "y":
                         os.makedirs(dest_dir)
                         print(f"Created directory: {dest_dir}")
+                        
                     else:
                         print("\nDirectory was not made.\nClosing program.")
                         exit()
                 except Exception as e:
                     print(f"Error: {e}")
+                    exit()    
     break
 
-walk_dir(start_dir)
+walk_dir(start_dir, dest_dir)
 
 input('\nPress any KEY to exit.')
