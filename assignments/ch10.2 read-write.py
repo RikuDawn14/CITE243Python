@@ -11,7 +11,7 @@ Description:
     It is designed to print the results to the screen in addition to saving them to a text file.
     
 Usage:
-    Run the script using Python 3.x13.7. Ensure all dependencies
+    Run the script using Python 3.13.7. Ensure all dependencies
     are installed before execution.
 
 ===========================================================
