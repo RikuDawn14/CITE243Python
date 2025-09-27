@@ -57,7 +57,7 @@ print("=" * 60 + "\nDate Format Converter: American (MM-DD-YYYY) to European (DD
 
 while True: # Loop for getting user inputs for source and destination directories and creation of if needed.
     start_dir = input("\nEnter the full path for the directory you want to convert, then hit ENTER.\n   => ")
-    if not os.path.exists(start_dir): # Checks is user input is vaild path.
+    if not os.path.exists(start_dir): # Checks if user input is vaild path.
         print("That directory does not exist.")
 
     else:
