@@ -34,21 +34,29 @@ def walk_dir(start_dir, dest_dir):
             match = pattern.search(filename) # See if the file name has a date from Regex.
             if match: # If match found increase file_numb by 1 and pass variables to next function.
                 file_numb += 1
-                date_adjust(root, filename, match, dest_dir)
+                rel_path = os.path.relpath(root, start_dir) # Gets relitive path for files in sub-directories.
+                date_adjust(root, filename, match, rel_path, dest_dir)
 
 ### Function to create new file name to convert the date. ###
-def date_adjust(root, filename, match, dest_dir):
+def date_adjust(root, filename, match, rel_path, dest_dir):
 
     mm, dd, yyyy = match.groups() # Give groups 1-3 a variable name for cleaner code.
     new_name = filename.replace(match.group(0), f"{dd}-{mm}-{yyyy}") # Creates new file name with only the dates switched.
 
-    file_save(root, filename, new_name, dest_dir)
+    file_save(root, filename, new_name, rel_path, dest_dir)
     
 ### Function to move files with new name and directory. ###
-def file_save(root, filename, new_name, dest_dir):
+def file_save(root, filename, new_name, rel_path, dest_dir):
     
     src = os.path.join(root, filename) # Variable to combine old file path and file name.
-    dest = os.path.join(dest_dir, new_name) # Variable to combine new file path and file name.
+    
+    if rel_path == ".": # If file is in the parent directoriy just use the new name and dest_dir.
+        dest = os.path.join(dest_dir, new_name)
+    else: # If file is in child directory this preserves the file sturcture of the converted files.
+        rel = os.path.join(dest_dir, rel_path)
+        dest = os.path.join(rel, new_name) # Variable to combine new file path and file name.
+        os.makedirs(rel, exist_ok=True) # Checks to see if new relitive path exists and makes if not. `exist_ok=True` stops error if path exists.
+
     shutil.move(src, dest) # Moves file with variables
 
 
