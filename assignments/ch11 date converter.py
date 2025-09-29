@@ -61,8 +61,9 @@ def file_save(root, filename, new_name, rel_path, dest_dir):
 
 
 ### Start of program ###
-print("=" * 60 + "\nDate Format Converter: American (MM-DD-YYYY) to European (DD-MM-YYYY)\n" + "=" * 60)
-
+print("=" * 69)
+print("Date Format Converter: American (MM-DD-YYYY) to European (DD-MM-YYYY)".center(69))
+print("=" * 69)
 while True: # Loop for getting user inputs for source and destination directories and creation of if needed.
     start_dir = input("\nEnter the full path for the directory you want to convert, then hit ENTER.\n   => ")
     if not os.path.exists(start_dir): # Checks if user input is vaild path.

@@ -42,7 +42,9 @@ def zippy(start_dir, zip_name, dest_dir):
 
 
 ### Start of program ###
-print("=" * 60 + "\nzip compressor\n" + "=" * 60)
+print("=" * 60)
+print("zip compressor".center(60))
+print("=" * 60)
 
 while True:
     start_dir = input("\nPlease input the file path of the folder or file you want compressed.\n => ").strip()
