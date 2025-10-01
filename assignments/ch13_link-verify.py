@@ -17,6 +17,6 @@ Usage:
 
 # Take user input for URL.
 # Verify URL is valid.
-# Find every "a" name on page.
+# Find every <a> link on page.
 # Test pages.
 # Return any links that are broken.
