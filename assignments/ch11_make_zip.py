@@ -1,7 +1,7 @@
 # ch11 convert directory into zip.
 """
 ===========================================================
-Program Name: ch11 Date Converter
+Program Name: ch11 make zip 
 Author: Matthew Balthaser
 Date: 2025-09-28
 Description:
