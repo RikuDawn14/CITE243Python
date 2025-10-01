@@ -20,3 +20,17 @@ Usage:
 # Find every <a> link on page.
 # Test pages.
 # Return any links that are broken.
+import webbrowser
+import requests
+
+
+### Start of program ###
+print("=" * 60)
+print("Link Verification".center(60))
+print("=" * 60)
+
+while True:
+    
+    url = input("\nPlease enter a URL to check.\n => ").strip()
+
+    
