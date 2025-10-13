@@ -7,7 +7,7 @@ Description:
     It tests whether each linked URL results in a "404 Not Found" 
     or other error status codes.
 Usage:
-    Run the script using Python 3.x. Ensure requests and 
+    Run the script using Python 3.13.7 Ensure requests and 
     beautifulsoup4 are installed:
     pip install requests beautifulsoup4
 ===========================================================
