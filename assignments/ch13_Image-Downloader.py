@@ -43,10 +43,12 @@ def mkdir():
 print("=" * 60)
 print("Image downloader".center(60))
 print("=" * 60)
-print.textwrap.dendent("""This is a program to search a image sharing site.
+startText = textwrap.dendent("""
+        This is a program to search a image sharing site.
         It will then download those images to a desiered location.
         ***WARNING***
         This may result in a large number of downloads.""")
+print(startText)
 start = input("\nPress 'Y' then hit ENTER to continue.\nOtherwise enter any key or leave blank and hit ENTER to exit.").strip().lower()
 if start == "y":
     print("\n---PROGRAM STARTING---\n")
