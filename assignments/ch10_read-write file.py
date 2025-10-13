@@ -69,7 +69,7 @@ def mad_lib():
         even the {adjective_6} guests were up and {verb_2.upper()}-ING! 
         It was a {adjective_7} day full of {p_noun_3}, laughter, and {p_noun_4}. 
         As the couple left for their {adjective_8} honeymoon, everyone waved their {p_noun_5}. 
-       """).strip()
+        """).strip()
     
     print("\n" + text + "\n")
 
