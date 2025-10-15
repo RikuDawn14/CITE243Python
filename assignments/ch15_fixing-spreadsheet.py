@@ -19,3 +19,34 @@ Usage:
 # If not, alert user of what row and offer to replace number
 # Get user input on fix then continue.
 # After done list number of rows checked, how many issues found, and how many changed
+
+import time
+
+
+
+### Start of program ###
+print("=" * 60)
+print("Check Googlesheets for errors".center(60)) # Kinda a lie only works with the specified sheet
+print("=" * 60)
+
+start = input("\nPress 'Y' then hit ENTER to continue.\nOtherwise enter any key or leave blank and hit ENTER to exit.\n\t=> ").strip().lower()
+if start == "y":
+    print("\n---PROGRAM STARTING---\n")
+    time.sleep(1)
+    while True:
+        url = input("Please input a full URL for a website to search, then hit ENTER.\n\t=> ") # get URL from user
+        if not url:
+            print("\nYou must enter a URL.\n")
+        else:
+            print("\nPlease wait while we search.\n")
+            time.sleep(1)
+
+
+
+
+
+else:
+    print("Goodbye!")
+    time.sleep(1)
+
+input("Press any KEY to exit.")
