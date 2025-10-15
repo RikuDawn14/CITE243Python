@@ -12,7 +12,7 @@ Usage:
     are installed before execution.
 ===========================================================
 """
-# Get URL for googlesheet from user
+# ✅ Get URL for googlesheet from user
 # Verify URL is valid
 # look at BEANS PER JAR and JARS in a row add the numbers together and compare to TOTAL BEANS
 # If numbers match move to next row
@@ -22,6 +22,8 @@ Usage:
 
 import time
 
+### Function to verify URL works ###
+def url_ver(url):
 
 
 ### Start of program ###
@@ -38,8 +40,12 @@ if start == "y":
         if not url:
             print("\nYou must enter a URL.\n")
         else:
-            print("\nPlease wait while we search.\n")
+            print("\nPlease wait while we check that URL.\n")
             time.sleep(1)
+            if not url_ver(url):
+                print("Invalid URL. Make sure to include 'http://' or 'https://'\n")
+                continue
+            
 
 
 
