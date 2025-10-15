@@ -34,7 +34,7 @@ if start == "y":
     print("\n---PROGRAM STARTING---\n")
     time.sleep(1)
     while True:
-        url = input("Please input a full URL for a website to search, then hit ENTER.\n\t=> ") # get URL from user
+        url = input("Please input a full URL for a Googlesheet to search, then hit ENTER.\n\t=> ") # get URL from user
         if not url:
             print("\nYou must enter a URL.\n")
         else:
