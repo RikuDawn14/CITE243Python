@@ -12,43 +12,39 @@ Usage:
     are installed before execution.
 ===========================================================
 """
-# ✅ Get URL for googlesheet from user
-# Verify URL is valid
-# look at BEANS PER JAR and JARS in a row add the numbers together and compare to TOTAL BEANS
+
+# Look at BEANS PER JAR and JARS in a row add the numbers together and compare to TOTAL BEANS
 # If numbers match move to next row
 # If not, alert user of what row and offer to replace number
 # Get user input on fix then continue.
 # After done list number of rows checked, how many issues found, and how many changed
 
 import time
+import ezsheets
 
-### Function to verify URL works ###
-def url_ver(url):
+def sum_check(ss):
+    ss = ezsheets.Spreadsheet('1jDZEdvSIh4TmZxccyy0ZXrH-ELlrwq8_YYiZrEOB4jg')
+    row = 1
+    beans = int(ss.sheets[0].getRow(f"{row}"[0]))
+    jars = int(ss.sheets[0].getRow(f"{row}"[1]))
+    total = int(ss.sheets[0].getRow(f"{row}"[2]))
+    pair = beans * jars
+    wrong = []
+    if not pair == total:
+        wrong.append(row)
+
 
 
 ### Start of program ###
 print("=" * 60)
-print("Check Googlesheets for errors".center(60)) # Kinda a lie only works with the specified sheet
+print("Check Googlesheet for errors".center(60)) # Kinda a lie only works with the specified sheet
 print("=" * 60)
 
 start = input("\nPress 'Y' then hit ENTER to continue.\nOtherwise enter any key or leave blank and hit ENTER to exit.\n\t=> ").strip().lower()
 if start == "y":
     print("\n---PROGRAM STARTING---\n")
     time.sleep(1)
-    while True:
-        url = input("Please input a full URL for a Googlesheet to search, then hit ENTER.\n\t=> ") # get URL from user
-        if not url:
-            print("\nYou must enter a URL.\n")
-        else:
-            print("\nPlease wait while we check that URL.\n")
-            time.sleep(1)
-            if not url_ver(url):
-                print("Invalid URL. Make sure to include 'http://' or 'https://'\n")
-                continue
-            
-
-
-
+    sum_check()
 
 
 else:
