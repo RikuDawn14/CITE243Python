@@ -21,12 +21,12 @@ import ezsheets
 
 ### Function that checks the spreadsheet ###
 def sum_check():
-    ss = ezsheets.Spreadsheet('1jDZEdvSIh4TmZxccyy0ZXrH-ELlrwq8_YYiZrEOB4jg')
+    ss = ezsheets.Spreadsheet('1jDZEdvSIh4TmZxccyy0ZXrH-ELlrwq8_YYiZrEOB4jg') # Gets sheet 
     row = 1
-    total_row = ss.rowCount()
-    wrong = []
-    while row <= total_row:
-        try:
+    total_row = ss.rowCount() # Gets the total number of rows
+    wrong = [] # List of rows with wrong products
+    while row <= total_row: # While loop set to stop after final row
+        try: # Try/Except to check if variables are intergers 
             beans = int(ss.sheets[0].getRow(row)[0])
             jars = int(ss.sheets[0].getRow(row)[1])
             total = int(ss.sheets[0].getRow(row)[2])
@@ -35,9 +35,9 @@ def sum_check():
             row += 1
             time.sleep(.5)
             continue
-        pair = beans * jars
-        if not pair == total:
-            wrong.append(row)
+        pair = beans * jars # Get product of column 0 and 1
+        if not pair == total: # If pair and total dont equal do this
+            wrong.append(row) # Adds row of error to the wrong list
         row += 1
     total_err = len(wrong)
     print(f"There are a total of {total_err} errors.\n")
@@ -57,7 +57,6 @@ if start == "y":
     print("\n---PROGRAM STARTING---\n")
     time.sleep(1)
     sum_check()
-
 
 else:
     print("Goodbye!")
