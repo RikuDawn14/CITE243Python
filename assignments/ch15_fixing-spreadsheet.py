@@ -13,25 +13,33 @@ Usage:
 ===========================================================
 """
 
-# Look at BEANS PER JAR and JARS in a row add the numbers together and compare to TOTAL BEANS
-# If numbers match move to next row
-# If not, alert user of what row and offer to replace number
-# Get user input on fix then continue.
-# After done list number of rows checked, how many issues found, and how many changed
-
 import time
 import ezsheets
 
-def sum_check(ss):
+def sum_check():
     ss = ezsheets.Spreadsheet('1jDZEdvSIh4TmZxccyy0ZXrH-ELlrwq8_YYiZrEOB4jg')
     row = 1
-    beans = int(ss.sheets[0].getRow(f"{row}"[0]))
-    jars = int(ss.sheets[0].getRow(f"{row}"[1]))
-    total = int(ss.sheets[0].getRow(f"{row}"[2]))
-    pair = beans * jars
+    total_row = ss.rowCount()
     wrong = []
-    if not pair == total:
-        wrong.append(row)
+    while row <= total_row:
+        try:
+            beans = int(ss.sheets[0].getRow(row)[0])
+            jars = int(ss.sheets[0].getRow(row)[1])
+            total = int(ss.sheets[0].getRow(row)[2])
+        except ValueError:
+            print(f"Row {row} did not have numbers. Skipping to next row.")
+            row += 1
+            time.sleep(.5)
+            continue
+        pair = beans * jars
+        if not pair == total:
+            wrong.append(row)
+        row += 1
+    total_err = len(wrong)
+    print(f"There are a total of {total_err} errors.\n")
+    print("=" * 60)
+    print(f"The following row or rows had errors: {wrong}")
+    print("=" * 60)
 
 
 
