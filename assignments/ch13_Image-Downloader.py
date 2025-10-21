@@ -2,6 +2,9 @@
 
 """
 ===========================================================
+Program Name: ch13 Photo scraper 
+Author: Matthew Balthaser
+Date: 2025-0910-19
 Description:
     This program goes to a photo sharing site and searches for
     category of photos then downloads them.

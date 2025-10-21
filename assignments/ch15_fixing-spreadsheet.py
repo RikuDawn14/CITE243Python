@@ -4,6 +4,9 @@
 
 """
 ===========================================================
+Program Name: ch15 check googlesheet
+Author: Matthew Balthaser
+Date: 2025-10-26
 Description:
     This program goes to a googlesheet searches for and issue
     then allows user to fix that issue.
@@ -16,6 +19,7 @@ Usage:
 import time
 import ezsheets
 
+### Function that checks the spreadsheet ###
 def sum_check():
     ss = ezsheets.Spreadsheet('1jDZEdvSIh4TmZxccyy0ZXrH-ELlrwq8_YYiZrEOB4jg')
     row = 1
@@ -59,4 +63,4 @@ else:
     print("Goodbye!")
     time.sleep(1)
 
-input("Press any KEY to exit.")
+input("Press ENTER to exit.")

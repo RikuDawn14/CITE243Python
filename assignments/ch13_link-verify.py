@@ -2,6 +2,9 @@
 
 """
 ===========================================================
+Program Name: ch13 Link Verify 
+Author: Matthew Balthaser
+Date: 2025-0910-19
 Description:
     This program takes a URL and finds every <a> link on the page.
     It tests whether each linked URL results in a "404 Not Found" 
