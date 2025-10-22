@@ -13,11 +13,6 @@ Usage:
     are installed before execution.
 ===========================================================
 """
-# Write a program that creates two tables, one for meals and one for ingredients
-
-# Then, write a program that prompts the user for input. If the user enters 'quit', the program should exit. The user can also enter a new meal name, followed by a colon and a comma-delimited list of ingredients: 'meal:ingredient1,ingredient2'. Save the meal and its ingredients in the meals and ingredients tables.
-
-# Enter the name of a meal or ingredient. If the name appears in the meals table, the program should list the meal’s ingredients. If the name appears in the ingredients table, the program should list every meal that uses this ingredient.
 
 import time
 import sqlite3
