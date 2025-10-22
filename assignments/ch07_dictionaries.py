@@ -59,7 +59,7 @@ def add_inventory(inventory, added_items):
 # loot text loop # STOP BEING MEAN TO THE DRAGON!!!
 def loot_message(counter):
     if counter == 1:
-       return "You BRUTALLY MURDERED the ancient dragon and desecrated its sacred treasure vault!"
+        return "You BRUTALLY MURDERED the ancient dragon and desecrated its sacred treasure vault!"
     elif  counter == 2:
         return "YOU MONSTER! The dragon's orphaned children watched you butcher their parent AGAIN!"
     elif counter == 3:
