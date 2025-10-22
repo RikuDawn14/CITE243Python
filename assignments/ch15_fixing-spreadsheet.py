@@ -23,15 +23,15 @@ import ezsheets
 def sum_check():
     ss = ezsheets.Spreadsheet('1jDZEdvSIh4TmZxccyy0ZXrH-ELlrwq8_YYiZrEOB4jg') # Gets sheet 
     row = 1
-    total_row = ss.rowCount() # Gets the total number of rows
+    max_row = sum(1 for row in ss.sheets[0].getRows() if any(cell.strip() for cell in row)) # Gets the total number of rows with data
     wrong = [] # List of rows with wrong products
-    while row <= total_row: # While loop set to stop after final row
+    while row <= max_row: # While loop set to stop after final row
         try: # Try/Except to check if variables are intergers 
             beans = int(ss.sheets[0].getRow(row)[0])
             jars = int(ss.sheets[0].getRow(row)[1])
             total = int(ss.sheets[0].getRow(row)[2])
         except ValueError:
-            print(f"Row {row} did not have numbers. Skipping to next row.")
+            print(f"Row [{row}] did not have numbers. Skipping to next row.")
             row += 1
             time.sleep(.5)
             continue
@@ -40,9 +40,11 @@ def sum_check():
             wrong.append(row) # Adds row of error to the wrong list
         row += 1
     total_err = len(wrong)
-    print(f"There are a total of {total_err} errors.\n")
+    print(f"There are a total of [{total_err}] errors.\n")
     print("=" * 60)
-    print(f"The following row or rows had errors: {wrong}")
+    print(f"The following row or rows had errors:")
+    for items in wrong:
+        print(items)
     print("=" * 60)
 
 
