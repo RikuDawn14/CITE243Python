@@ -13,7 +13,6 @@ Usage:
     are installed before execution.
 ===========================================================
 """
-# Test
 
 import time
 import sqlite3
