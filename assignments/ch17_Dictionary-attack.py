@@ -19,3 +19,6 @@ Usage:
 # Make loop to try passwords on file (both upper and lower versions)
 # Stop loop when password found
 # Print password that worked
+
+with open(dic_path, 'r') as dictionary:
+    dic_list = dictionary.read().splitlines()
