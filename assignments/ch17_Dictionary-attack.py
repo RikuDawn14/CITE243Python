@@ -52,7 +52,7 @@ def confirm(dic_list, pdf_file):
     print("WARNING".center(60))
     print("The following attack may take a while to complete.".center(60))
     print("*" * 60)
-    confirm = input("Are you sure you would like to continue? [Y/N]\n\t=> ").strip().lower()
+    confirm = input("\nAre you sure you would like to continue? [Y/N]\n\t=> ").strip().lower()
     if confirm == "y":
         attack(dic_list, pdf_file)
     else:
@@ -73,7 +73,7 @@ def attack(dic_list, pdf_file):
 def save(reader):
     writer = pypdf.PdfWriter()
     save_in = input("Would you like to save a decypted version of the PDF? [Y/N]\n\t=> ").strip().lower()
-    if not save_in == "y":
+    if save_in != "y":
         return
     else:
         new_name = input("What would you like to name the decrypted PDF?\n\t=> ")
