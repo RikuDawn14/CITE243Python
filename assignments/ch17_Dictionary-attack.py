@@ -21,17 +21,34 @@ Usage:
 # Print password that worked
 
 import time
+import os
 import pypdf
 
 
 def user_in():
-    dic_path = input("Please enter the path to your dictionary file for attack then hit ENTER.\n\t=> ")
     
+    while True:
+        dic_path = input("Please enter the path to your dictionary file for attack then hit ENTER.\n\t=> ")
+        if not os.path.exists(dic_path):
+            print(f"The path [{dic_path}] is not valid. Please check path and try again.")
+            time.sleep(1)
+        else:
+            break
+
     with open(dic_path, 'r') as dictionary:
         dic_list = dictionary.read().splitlines()
+    
+    while True:
+        pdf_file = input("Please enter the path to the protected PDF file to attack.\n\t=> ")
+        if not os.path.exists(pdf_file):
+            print(f"The path [{pdf_file}] is not valid. Please check path and try again.")
+            time.sleep(1)
+        else:
+            break
+    attack(dic_list, pdf_file)
 
-
-
+def attack(dic_list, pdf_file):
+    conferm = 
 
 
 
@@ -46,6 +63,7 @@ start = input("\nPress 'Y' then hit ENTER to continue.\nOtherwise enter any key 
 if start == "y":
     print("\n---PROGRAM STARTING---\n")
     time.sleep(.5)
+    user_in()
 
 
 
