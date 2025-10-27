@@ -45,10 +45,41 @@ def user_in():
             time.sleep(1)
         else:
             break
-    attack(dic_list, pdf_file)
+    confirm(dic_list, pdf_file)
+
+def confirm(dic_list, pdf_file):
+    print("*" * 60)
+    print("WARNING".center(60))
+    print("The following attack may take a while to complete.".center(60))
+    print("*" * 60)
+    confirm = input("Are you sure you would like to continue? [Y/N]\n\t=> ").strip().lower()
+    if confirm == "y":
+        attack(dic_list, pdf_file)
+    else:
+        return
 
 def attack(dic_list, pdf_file):
-    conferm = 
+    loop = 0
+    reader = pypdf.PdfReader(pdf_file)
+    while reader.is_encrypted == True:
+        pass_type = reader.decrypt(dic_list[loop]).name
+        if pass_type == "NOT_DECRYPTED":
+            loop += 1
+        else:
+            break
+    print(f"The password [{dic_list[loop]}] decrypted the file. It was a [{pass_type}].")
+    save(reader)
+
+def save(reader):
+    writer = pypdf.PdfWriter()
+    save_in = input("Would you like to save a decypted version of the PDF? [Y/N]\n\t=> ").strip().lower()
+    if not save_in == "y":
+        return
+    else:
+        new_name = input("What would you like to name the decrypted PDF?\n\t=> ")
+        writer.append(reader)
+        with open(new_name, 'wb') as file:
+            writer.write(file)
 
 
 
@@ -64,8 +95,6 @@ if start == "y":
     print("\n---PROGRAM STARTING---\n")
     time.sleep(.5)
     user_in()
-
-
 
 else:
     time.sleep(.5)
