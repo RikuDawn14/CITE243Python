@@ -30,7 +30,7 @@ def user_in():
     while True:
         dic_path = input("Please enter the path to your dictionary file for attack then hit ENTER.\n\t=> ")
         if not os.path.exists(dic_path):
-            print(f"The path [{dic_path}] is not valid. Please check path and try again.")
+            print(f"\nThe path [{dic_path}] is not valid. Please check path and try again.\n")
             time.sleep(1)
         else:
             break
@@ -44,7 +44,7 @@ def user_in():
     while True:
         pdf_file = input("Please enter the path to the protected PDF file to attack.\n\t=> ")
         if not os.path.exists(pdf_file):
-            print(f"The path [{pdf_file}] is not valid. Please check path and try again.")
+            print(f"\nThe path [{pdf_file}] is not valid. Please check path and try again.\n")
             time.sleep(1)
         else:
             break
@@ -64,6 +64,7 @@ def confirm(dic_list, pdf_file):
 def attack(dic_list, pdf_file):
     loop = 0
     list_len = len(dic_list)
+    print()
     pbar = tqdm(total=list_len, unit="PW", dynamic_ncols=True)
     reader = pypdf.PdfReader(pdf_file)
     while loop < list_len:
