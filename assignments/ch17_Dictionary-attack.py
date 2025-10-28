@@ -24,7 +24,7 @@ import os
 import pypdf
 from tqdm import tqdm
 
-
+### Get user inputs for locations of dictionary file and PDF ###
 def user_in():
     
     while True:
@@ -36,10 +36,10 @@ def user_in():
             break
 
     with open(dic_path, 'r') as dictionary:
-        lower_dic = dictionary.read().splitlines()
-        upper_dic = [word.upper() for word in lower_dic]
-        title_dic = [word.title() for word in lower_dic]
-        dic_list = lower_dic + title_dic + upper_dic
+        lower_dic = dictionary.read().splitlines() # The dictionary provided is all lowercase, this just makes that txt into a list
+        upper_dic = [word.upper() for word in lower_dic] # Makes all uppercase version of list 
+        title_dic = [word.title() for word in lower_dic] # Makes titlecase version of list
+        dic_list = lower_dic + title_dic + upper_dic # Combines the three lists into one
     
     while True:
         pdf_file = input("Please enter the path to the protected PDF file to attack.\n\t=> ")
@@ -50,6 +50,7 @@ def user_in():
             break
     confirm(dic_list, pdf_file)
 
+### Get user comfirmation before running attack ###
 def confirm(dic_list, pdf_file):
     print("*" * 60)
     print("WARNING".center(60))
@@ -61,19 +62,20 @@ def confirm(dic_list, pdf_file):
     else:
         return
 
+### Function to do dictionary attack on PDF ###
 def attack(dic_list, pdf_file):
-    loop = 0
-    list_len = len(dic_list)
-    print()
-    pbar = tqdm(total=list_len, unit="PW", dynamic_ncols=True)
-    reader = pypdf.PdfReader(pdf_file)
+    loop = 0 # What list index number loop is on
+    list_len = len(dic_list) # Number of passwords in list
+    print() # Left blank for readablity
+    pbar = tqdm(total=list_len, unit="PW", dynamic_ncols=True) # Progress bar that shows number of passwords tried and how many per second
+    reader = pypdf.PdfReader(pdf_file) # Retrieve PDF
     while loop < list_len:
-        pass_type = reader.decrypt(dic_list[loop]).name
+        pass_type = reader.decrypt(dic_list[loop]).name # Attempt to decrypt PDF and give name of response (NOT_DECRYPTED, OWNER_PASSWORD, or USER_PASSWORD)
         if pass_type == "NOT_DECRYPTED":
             loop += 1
             pbar.update(1)
         else:
-            pbar.update(list_len - loop)
+            pbar.update(list_len - loop) # Adds to progress bar to make it 100% when password is found
             time.sleep(.5)
             break
     pbar.close()
@@ -81,7 +83,7 @@ def attack(dic_list, pdf_file):
         print(f"{pass_type}: None of the passwords in the list worked.")
         time.sleep(1)
     else:
-        print(f"\nThe password [{dic_list[loop]}] decrypted the file. It was a [{pass_type}].")
+        print(f"\nThe password [{dic_list[loop]}] decrypted the file. It was a [{pass_type}].") # Print found password and password type
         time.sleep(1)
 
 
