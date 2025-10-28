@@ -1,5 +1,9 @@
 # Ch 17 PDF Password Breaker
 
+# Use dictionary file provided in 'PythonBookPrograms' folder 'dictionary.txt'
+# Use PDF file provided in 'PythonBookPrograms' folder 'Recursion_Chapter1_Crypt.pdf'
+# PW- Parametrized
+
 """
 ===========================================================
 Program Name: ch17 Dictionary Attack
@@ -14,15 +18,11 @@ Usage:
 ===========================================================
 """
 
-# Get path to PDF
-# Get path to dictionary file
-# Make loop to try passwords on file (both upper and lower versions)
-# Stop loop when password found
-# Print password that worked
 
 import time
 import os
 import pypdf
+from tqdm import tqdm
 
 
 def user_in():
@@ -36,7 +36,10 @@ def user_in():
             break
 
     with open(dic_path, 'r') as dictionary:
-        dic_list = dictionary.read().splitlines()
+        lower_dic = dictionary.read().splitlines()
+        upper_dic = [word.upper() for word in lower_dic]
+        title_dic = [word.title() for word in lower_dic]
+        dic_list = lower_dic + title_dic + upper_dic
     
     while True:
         pdf_file = input("Please enter the path to the protected PDF file to attack.\n\t=> ")
@@ -60,28 +63,23 @@ def confirm(dic_list, pdf_file):
 
 def attack(dic_list, pdf_file):
     loop = 0
+    list_len = len(dic_list)
+    pbar = tqdm(total=list_len, unit="PW", dynamic_ncols=True)
     reader = pypdf.PdfReader(pdf_file)
-    while reader.is_encrypted == True:
+    while loop < list_len:
         pass_type = reader.decrypt(dic_list[loop]).name
         if pass_type == "NOT_DECRYPTED":
             loop += 1
+            pbar.update(1)
         else:
+            pbar.update(list_len - loop)
+            time.sleep(.5)
             break
-    print(f"The password [{dic_list[loop]}] decrypted the file. It was a [{pass_type}].")
-    save(reader)
-
-def save(reader):
-    writer = pypdf.PdfWriter()
-    save_in = input("Would you like to save a decypted version of the PDF? [Y/N]\n\t=> ").strip().lower()
-    if save_in != "y":
-        return
+    pbar.close()
+    if pass_type == "NOT_DECRYPTED":
+        print(f"{pass_type}: None of the passwords in the list worked.")
     else:
-        new_name = input("What would you like to name the decrypted PDF?\n\t=> ")
-        writer.append(reader)
-        with open(new_name, 'wb') as file:
-            writer.write(file)
-
-
+        print(f"The password [{dic_list[loop]}] decrypted the file. It was a [{pass_type}].")
 
 
 
