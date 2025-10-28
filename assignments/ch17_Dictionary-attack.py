@@ -78,8 +78,10 @@ def attack(dic_list, pdf_file):
     pbar.close()
     if pass_type == "NOT_DECRYPTED":
         print(f"{pass_type}: None of the passwords in the list worked.")
+        time.sleep(1)
     else:
-        print(f"The password [{dic_list[loop]}] decrypted the file. It was a [{pass_type}].")
+        print(f"\nThe password [{dic_list[loop]}] decrypted the file. It was a [{pass_type}].")
+        time.sleep(1)
 
 
 
