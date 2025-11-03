@@ -23,6 +23,26 @@ Usage:
 
 import time
 import tqdm
+import datetime
+import importlib
+
+future = importlib.import_module("ch19_Friday-13th-Finder-F")
+past = importlib.import_module("ch19_Friday-13th-Finder-P")
+
+def user_cho():
+    user_in = input("Type which program you would like to run, then hit ENTER.\n\n1) Find future friday the 13th's.\n2) Find past friday the 13th's.\nEXIT) exit\n\n\t=> ").strip().lower()
+    while True:
+        if not user_in:
+            print("You need to enter an option.")
+        elif user_in == '1':
+            future
+        elif user_in == '2':
+            past()
+        elif user_in == 'exit':
+            return
+        else:
+            print(f"[{user_in}] is not a valid option.")
+
 
 ### Start of program ###
 print("=" * 60)
@@ -33,6 +53,7 @@ start = input("\nPress 'Y' then hit ENTER to continue.\nOtherwise enter any key 
 if start == "y":
     print("\n---PROGRAM STARTING---\n")
     time.sleep(.5)
+    user_cho()
 
 else:
     time.sleep(.5)
