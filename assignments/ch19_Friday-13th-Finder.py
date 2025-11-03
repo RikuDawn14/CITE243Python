@@ -20,3 +20,22 @@ Usage:
 # Repeat until it has found the next ten Friday the 13th dates
 
 # The second program should do the same thing except subtract the timedelta object. This program will find all of the past months and years with a Friday the 13th, and stop when it reaches the year 1
+
+import time
+import tqdm
+
+### Start of program ###
+print("=" * 60)
+print("Friday the 13th Finder".center(60))
+print("=" * 60)
+
+start = input("\nPress 'Y' then hit ENTER to continue.\nOtherwise enter any key or leave blank and hit ENTER to exit.\n\t=> ").strip().lower()
+if start == "y":
+    print("\n---PROGRAM STARTING---\n")
+    time.sleep(.5)
+
+else:
+    time.sleep(.5)
+
+print("\n---EXITING PROGRAM---\n")
+input("Press ENTER to exit.")
