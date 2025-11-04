@@ -37,7 +37,7 @@ def user_cho():
         elif user_in == '1':
             future
         elif user_in == '2':
-            past()
+            past
         elif user_in == 'exit':
             return
         else:
