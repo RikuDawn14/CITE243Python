@@ -14,8 +14,8 @@ def find_past_fridays():
         date = date - delta
 
     total = len(spooky)
-    print(f"There were [{total}] friday the 13th's in the past.")
-    print("Here are the last ten friday the 13th's:")
+    print(f"There were [{total}] Friday the 13th's in the past.")
+    print("Here are the last ten Friday the 13th's:")
     for i in range(10):
         print('-' + spooky[i])
 

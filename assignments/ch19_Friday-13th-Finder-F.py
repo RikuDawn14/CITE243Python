@@ -15,7 +15,7 @@ def find_future_fridays():
             loop += 1
         date = date + delta
 
-    print("Here are the next ten (10) friday the 13ths:")
+    print("Here are the next ten Friday the 13ths:")
     for i in spooky:
         print(i)
 
