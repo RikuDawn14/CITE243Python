@@ -12,21 +12,14 @@ Usage:
     are installed before execution.
 ===========================================================
 """
-# Write two programs
-
-# Create a datetime object for the current day and a timedelta object of one day
-# If the current day is a Friday the 13th, it should print the month and year
-# Add the timedelta object to the datetime object to set it to the next day, and repeat the check
-# Repeat until it has found the next ten Friday the 13th dates
-
-# The second program should do the same thing except subtract the timedelta object. This program will find all of the past months and years with a Friday the 13th, and stop when it reaches the year 1
 
 import time
 import importlib
 
-future = importlib.import_module("ch19_Friday-13th-Finder-F")
-past = importlib.import_module("ch19_Friday-13th-Finder-P")
+future = importlib.import_module("ch19_Friday-13th-Finder-F") # imports future dates function
+past = importlib.import_module("ch19_Friday-13th-Finder-P") # imports past dates function
 
+### function to get user input to choose what action they would like to do ###
 def user_cho():
     
     while True:
@@ -34,10 +27,10 @@ def user_cho():
         if not user_in:
             print("You need to enter an option.")
         elif user_in == '1':
-            future.find_future_fridays()
+            future.find_future_fridays() # runs function in future file
             time.sleep(1.5)
         elif user_in == '2':
-            past.find_past_fridays()
+            past.find_past_fridays() # runs function in past file
             time.sleep(1.5)
         elif user_in == 'exit':
             return
