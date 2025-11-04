@@ -30,7 +30,7 @@ past = importlib.import_module("ch19_Friday-13th-Finder-P")
 def user_cho():
     
     while True:
-        user_in = input("Type which program you would like to run, then hit ENTER.\n\n1) Find future friday the 13th's.\n2) Find past friday the 13th's.\nEXIT) exit\n\n\t=> ").strip().lower()
+        user_in = input("Type which program you would like to run, then hit ENTER.\n\n1) Find future 10 friday the 13th's.\n2) Find past friday the 13th's.\nEXIT) exit\n\n\t=> ").strip().lower()
         if not user_in:
             print("You need to enter an option.")
         elif user_in == '1':
