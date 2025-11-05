@@ -18,7 +18,7 @@ def find_future_fridays():
 
     print("Here are the next ten Friday the 13ths:")
     for i in spooky: # Prints list
-        print(i)
+        print("-" + i)
 
 ### Used for testing. Runs script if script is run directly ###
 if __name__ == "__main__":
